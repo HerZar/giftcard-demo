@@ -1,0 +1,26 @@
+[
+  {
+    "discount": 10,
+    "minValue": 1000,
+    "maxValue": 5000,
+    "value": 5000
+  },
+  {
+    "discount": 20,
+    "minValue": 1000,
+    "maxValue": 5000,
+    "value": 5000
+  },
+  {
+    "discount": 50,
+    "minValue": 1000,
+    "maxValue": 5000,
+    "value": 5000
+  },
+  {
+    "discount": 100,
+    "minValue": 1000,
+    "maxValue": 5000,
+    "value": 5000
+  }
+]
