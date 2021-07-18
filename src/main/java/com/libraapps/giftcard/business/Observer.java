@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope(
-        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
-        proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Component
+//@Scope(
+//        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
+//        proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Observer extends Thread implements IObserver{
 
     private static final String TAB= "\t";
@@ -50,7 +50,7 @@ public class Observer extends Thread implements IObserver{
         while (this.aBoolean) {
             this.displayBagsStatus();
             try {
-                Thread.sleep(2*1000);
+                Thread.sleep(1*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

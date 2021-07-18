@@ -12,8 +12,6 @@ import org.springframework.context.ApplicationContext;
 public class GiftcardApplication implements CommandLineRunner {
 
     @Autowired
-    ApplicationContext applicationContext;
-
     private StoreControler storeControler;
 
     public static void main(String[] args) {
@@ -23,7 +21,7 @@ public class GiftcardApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        storeControler = new StoreControler(applicationContext);
+
         storeControler.storeProcess();
     }
 }

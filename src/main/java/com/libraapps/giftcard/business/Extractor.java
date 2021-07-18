@@ -10,17 +10,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-@Scope(
-        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
-        proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Component
+//@Scope(
+//        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
+//        proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Extractor  extends Thread implements IExtractor{
 
     private GiftCardRepository giftCardRepository;
 
     private Boolean aBoolean;
 
-    @Autowired
+//    @Autowired
     public Extractor(GiftCardRepository giftCardRepository) {
         this.giftCardRepository = giftCardRepository;
         this.aBoolean =true;
@@ -49,7 +49,7 @@ public class Extractor  extends Thread implements IExtractor{
         while (this.aBoolean) {
             this.giveACards();
             try {
-                Thread.sleep(5*1000);
+                Thread.sleep(1*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
