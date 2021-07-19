@@ -50,7 +50,7 @@ public class Observer extends Thread implements IObserver{
         while (this.aBoolean) {
             this.displayBagsStatus();
             try {
-                Thread.sleep(1*1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

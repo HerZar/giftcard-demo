@@ -10,19 +10,18 @@ import java.util.List;
 //@Scope(
 //        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
 //        proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Repositor extends Thread {
+public class Repositor{
 
     private static GiftCardRepository giftCardRepository;
-    private Boolean aBoolean;
 
     //    @Autowired
     public Repositor(GiftCardRepository giftCardRepository) {
         this.giftCardRepository = giftCardRepository;
-        this.aBoolean = true;
+
     }
 
 
-    public static synchronized void refill() {
+    public synchronized void refill() {
         List<GiftCardDto> toFill = giftCardRepository.getAll();
         for (int i = 0; i < toFill.size(); i++) {
             if (toFill.get(i).getValue() < toFill.get(i).getMinValue()) {
@@ -32,14 +31,4 @@ public class Repositor extends Thread {
 
     }
 
-    public void setaBoolean(Boolean b) {
-        this.aBoolean = b;
-    }
-
-    @Override
-    public void run() {
-        while (this.aBoolean) {
-            this.refill();
-        }
-    }
 }

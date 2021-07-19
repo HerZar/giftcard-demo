@@ -14,24 +14,17 @@ import java.util.List;
 //@Scope(
 //        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
 //        proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Extractor  extends Thread implements IExtractor{
+public class Extractor implements IExtractor{
 
     private GiftCardRepository giftCardRepository;
-
-    private Boolean aBoolean;
 
 //    @Autowired
     public Extractor(GiftCardRepository giftCardRepository) {
         this.giftCardRepository = giftCardRepository;
-        this.aBoolean =true;
-    }
-
-    public void setaBoolean(Boolean b){
-        this.aBoolean =b;
     }
 
     @Override
-    public void giveACards() {
+    public synchronized void giveACards() {
 
         List<GiftCardDto> toFill = this.giftCardRepository.getAll();
         toFill.forEach(giftCardDto -> {
@@ -41,19 +34,6 @@ public class Extractor  extends Thread implements IExtractor{
                     giftCardDto.subtractValue(giftCardDto.getValue());
                 }
         });
-
-    }
-
-    @Override
-    public void run() {
-        while (this.aBoolean) {
-            this.giveACards();
-            try {
-                Thread.sleep(1*1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 }
