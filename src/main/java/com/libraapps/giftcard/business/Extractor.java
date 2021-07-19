@@ -14,7 +14,7 @@ import java.util.List;
 //@Scope(
 //        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
 //        proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Extractor implements IExtractor{
+public class Extractor{
 
     private GiftCardRepository giftCardRepository;
 
@@ -23,7 +23,6 @@ public class Extractor implements IExtractor{
         this.giftCardRepository = giftCardRepository;
     }
 
-    @Override
     public synchronized void giveACards() {
 
         List<GiftCardDto> toFill = this.giftCardRepository.getAll();

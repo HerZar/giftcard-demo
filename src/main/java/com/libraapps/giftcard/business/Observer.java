@@ -1,28 +1,20 @@
 package com.libraapps.giftcard.business;
 
+import com.libraapps.giftcard.model.Stop;
 import com.libraapps.giftcard.repository.GiftCardRepository;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
-//@Component
-//@Scope(
-//        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
-//        proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Observer extends Thread implements IObserver{
+public class Observer implements Runnable{
 
     private static final String TAB= "\t";
     private static final String ALERT= "ALERT";
     private GiftCardRepository giftCardRepository;
-    private Boolean aBoolean;
+    private Stop stop;
 
-    public Observer(GiftCardRepository giftCardRepository) {
+    public Observer(GiftCardRepository giftCardRepository, Stop stop) {
         this.giftCardRepository = giftCardRepository;
-        aBoolean = true;
+        this.stop = stop;
     }
 
-    @Override
     public void displayBagsStatus() {
 
         this.giftCardRepository.getAll().forEach(gift ->{
@@ -41,13 +33,9 @@ public class Observer extends Thread implements IObserver{
 
     }
 
-    public void setaBoolean(Boolean b){
-        this.aBoolean =b;
-    }
-
     @Override
     public void run() {
-        while (this.aBoolean) {
+        while (!stop.toStop()) {
             this.displayBagsStatus();
             try {
                 Thread.sleep(500);

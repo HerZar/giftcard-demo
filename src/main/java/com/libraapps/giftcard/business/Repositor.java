@@ -6,20 +6,13 @@ import com.libraapps.giftcard.repository.GiftCardRepository;
 
 import java.util.List;
 
-//@Component
-//@Scope(
-//        value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
-//        proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Repositor{
 
     private static GiftCardRepository giftCardRepository;
 
-    //    @Autowired
     public Repositor(GiftCardRepository giftCardRepository) {
         this.giftCardRepository = giftCardRepository;
-
     }
-
 
     public synchronized void refill() {
         List<GiftCardDto> toFill = giftCardRepository.getAll();
